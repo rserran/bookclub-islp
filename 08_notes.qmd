@@ -88,7 +88,7 @@ knitr::include_graphics("images/08_2_basic_tree.png")
 2. For every observation that falls into the region $R_j$, we make the same prediction: the **mean** of the response values in $R_j$
 3. The goal is to find regions (here boxes) $R_1, . . . ,R_J$ that **minimize** the $RSS$, given by
 
-$$\mathrm{RSS}=\sum_{j=1}^{J}\sum_{i{\in}R_j}^{}(y_i - \hat{y}_{R_j})^2$$
+$\mathrm{RSS}=\sum_{j=1}^{J}\sum_{i{\in}R_j}^{}(y_i - \hat{y}_{R_j})^2$
 
 where $\hat{y}_{R_j}$ is the **mean** response for the training observations within the $j$th box
 
@@ -101,7 +101,7 @@ So, take a top-down, greedy approach known as recursive binary splitting:
 - **top-down** because it begins at the top of the tree and then successively splits the predictor space
 - **greedy** because at each step of the tree-building process, the best split is made at that particular step, rather than looking ahead and picking a split that will lead to a better tree in some future step
 
-1. First, select the predictor $X_j$ and the cutpoint $s$ such that splitting the predictor space into the regions ${\{X|X_j<s\}}$ and ${\{X|X_j{\ge}s}\}$ leads to the greatest possible reduction in RSS
+1. First, select the predictor $ X_j $ and the cutpoint $s$ such that splitting the predictor space into the regions ${\{X|X_j<s\}}$ and ${\{X|X_j{\ge}s}\}$ leads to the greatest possible reduction in RSS
 2. Repeat the process looking for the best predictor and best cutpoint to split data further (i.e., split one of the 2 previously identified regions - not the entire predictor space) minimizing the RSS within each of the resulting regions
 3. Continue until a stopping criterion is reached, e.g., no region contains more than five observations
 4. Again, we predict the response for a given test observation using the **mean of the training observations** in the region to which that test observation belongs
@@ -119,7 +119,7 @@ but ...
 2. Apply cost-complexity pruning to $T_0$ to obtain a sequence of BEST subtrees, as a function of $\alpha$
 
 Cost complexity pruning minimizes (Eq. 8.4)
-$\sum_{m=1}^{|T|}\sum_{x_i{\in}R_m}(y_i-\hat{y}_{R_m})^2 + \alpha|T|$
+$ \sum_{m=1}^{|T|}\sum_{x_i{\in}R_m}(y_i-\hat{y}_{R_m})^2 + \alpha|T| $
 
 where
 
